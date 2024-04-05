@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Generated Links</title>
+    <style>
+        body{
+            background-color: black;
+            color: #fff;
+            font-size: 1.5vw;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3vw;
+            margin: 2vw;
+        }
+        td {
+            border-bottom: 0.1px solid rgb(43, 43, 43); 
+        }
+        th,td{
+            padding: 5px;
+            padding-right: 4vw;
+        }
+        .TotalEntry{
+            width: 30vw;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="TotalEntry">
+        <p>Total URLs- <%= URLs.length %></p>
+    </div>
+    <table>
+       <tr>
+           <th>Sno.</th>
+           <th>Redirect URL</th>
+           <th>Short URL</th>
+           <th>Total Clicks</th>
+       </tr>
+    <%URLs.forEach((URL,index) => { %>
+        <tr>
+            <td><%= index+1 %></td>
+            <td><%= URL.redirectURL %></td>
+            <td style="color:rgb(32, 32, 173)"><%= URL.shortId %></td>
+            <td><%= URL.visitHistory.length %></td>
+            <td>
+                <form method="DELETE" action="/url/<%= URL.shortId %>">
+                    <input type="submit" value="remove">
+                </form>
+            </td>
+        </tr>
+    <% }) %>
+    </table>
+</body>
+</html>

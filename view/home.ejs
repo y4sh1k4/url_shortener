@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+        }
+        .heading{
+            font-size: 2vw;
+        }
+        .box{
+            background: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-56228.jpg?w=1380&t=st=1708500576~exp=1708501176~hmac=db7966c4e4e7b1b6b1367fcccbafec835f5674ff6dacca753cf49f79cc56016e");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3vw;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2vw;
+        }
+        form{
+            display: flex;
+            gap: 0;
+        }
+        input{
+            height: 5vw;
+            width: 40vw;
+            color: black;
+            padding: 1vw;
+            font-size: 1.5vw;
+        }
+        button{
+            height: 5vw;
+            width: 5vw;
+            background-color: rgb(10, 10, 119);
+            font-size: 1.5vw;
+        }
+        p{
+            font-size: 1.5vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="heading"><h1>Generate short URLs!!</h1></div>
+        <div class="container">
+            <div class="input-box">
+                <form method="POST" action="/url">
+                    <input type="text" placeholder="Enter or paste url here" name="url">
+                    <button type="submit">Go</button>
+                </form>
+            </div>
+            <div>
+                <% if (locals.id) { %>
+                    <p>Shorten url:- http://localhost:3000/url/<%= id %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
